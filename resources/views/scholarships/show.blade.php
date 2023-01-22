@@ -1,0 +1,119 @@
+@extends('layouts.post')
+
+@section('content')
+<div class="container mt-5">
+    <div class="card border shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h4 class="card-title">{{$scholarship->name}}</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="card-text">{{$scholarship->description}}</p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-6">
+            <h6 class="card-title">Data de início:</h6>
+            <p class="card-text">{{$scholarship->start_date}}</p>
+          </div>
+          <div class="col-md-6">
+            <h6 class="card-title">Data de término:</h6>
+            <p class="card-text">{{$scholarship->end_date}}</p>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12">
+            <h6 class="card-title">Valor:</h6>
+            <p class="card-text">{{$scholarship->value}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+@push('css')
+<style>
+  .company-banner {
+    min-height: 20vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .company-banner-img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .3));
+    width: 100%;
+    height: 200px;
+  }
+
+  .company-website {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+  }
+
+  .company-media {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    left: 2rem;
+    bottom: 1rem;
+    color: #333;
+    padding-right: 2rem;
+    background-color:rgba(255,255,255,.8);
+  }
+
+  .company-logo {
+    max-width: 100px;
+    height: auto;
+    margin-right: 1rem;
+    padding: 1rem;
+    background-color: white;
+  }
+
+  .company-category {
+    font-size: 1.3rem;
+  }
+
+  .company-link:hover {
+    color: #ddd;
+  }
+
+  .job-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  .job-hdr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to right, #e1edf7, #EDF2F7)
+  }
+
+  .job-item{
+    margin-bottom: .5rem;
+    padding:.5rem 0;
+  }
+  .job-item:hover {
+    background-color:#eee;
+  } 
+
+</style>
+@endpush
+
+@push('js')
+
+@endpush
