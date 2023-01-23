@@ -24,7 +24,7 @@
                             <div class="rotate">
                                 <i class="fas fa-users fa-4x"></i>
                             </div>
-                            <h6 class="text-uppercase">Minhas vagas para bolsas:</h6>
+                            <h6 class="text-uppercase">Minhas bolsas de estudo:</h6>
                             <h1 class="">{{ $scholarships ? $scholarships->count() : 0 }}</h1>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                                 <i class="fas fa-users fa-4x"></i>
                             </div>
                             <h6 class="text-uppercase">Minhas vagas de intercambio:</h6>
-                            <h1 class="">0</h1>
+                            <h1 class="">{{ $intercambios ? $intercambios->count() : 0 }}</h1>
                         </div>
                     </div>
                 </div>
@@ -197,9 +197,9 @@
                                                 <td>{{ $scholarship->start_date }}</td>
                                                 <td>{{ $scholarship->end_date }}</td>
                                                 <td>{{ $scholarship->value }}</td>
-                                                <td>
+                                                <td class='d-flex justify-content-center'>
                                                     <a href="{{ route('scholarships.edit', ['scholarship' => $scholarship]) }}"
-                                                        class="btn primary-btn">Editar</a>
+                                                        class="btn primary-btn d-inline-block mr-2">Editar</a>
                                                     <form action="{{route('scholarships.destroy',['scholarship'=>$scholarship])}}" class="d-inline-block" id="delScholarshipForm"
                                                         method="POST">
                                                         @csrf
@@ -208,20 +208,68 @@
                                                             class="btn danger-btn">Deletar</button>
                                                     </form>
                                                 </td>
-                                                {{-- <td>
-                                    <a href="{{route('scholarships.edit',['scholarship'=>$scholarship])}}" class="btn primary-btn">Editar</a>
-                                    <form action="{{route('scholarships.destroy',['scholarship'=>$scholarship->id])}}" class="d-inline-block" id="delScholarshipForm" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" id="delScholarshipBtn" class="btn danger-btn">Deletar</button>
-                                    </form>
-                                </td>   --}}
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
                                             <td>Você não criou nenhuma bolsa ainda.</td>
                                             <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endif
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="author-posts">
+                <div class="row my-4">
+                    <div class="col-lg-12 col-md-8 col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">Gerenciar intercâmbios</h4>
+                                <a href="{{ route('intercambios.create') }}" class="btn primary-btn">Criar intercâmbio</a>
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th>Período de inscrição</th>
+                                        <th>Período de intercâmbio</th>
+                                        <th>Destino</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($intercambios)
+                                        @foreach ($intercambios as $index => $intercambio)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $intercambio->name }}</td>
+                                                <td>{{ $intercambio->registration_period_start_date }} a {{ $intercambio->registration_period_end_date }}</td>
+                                                <td>{{ $intercambio->exchange_period_start_date }} a {{ $intercambio->exchange_period_end_date }}</td>
+                                                <td>{{ $intercambio->destination }}</td>
+                                                <td class='d-flex justify-content-center'>
+                                                    <a href="{{ route('intercambios.edit', ['intercambio' => $intercambio]) }}" class="btn primary-btn d-inline-block mr-2">Editar</a>
+                                                    <form action="{{route('intercambios.destroy',['intercambio'=>$intercambio])}}" class="d-inline-block" id="delIntercambioForm" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" id="delIntercambioBtn" class="btn danger-btn d-inline-block">Deletar</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <tr>
+                                            <td>Você não criou nenhum intercâmbio ainda.</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

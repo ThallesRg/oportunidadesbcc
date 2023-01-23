@@ -14,7 +14,7 @@
                     <a class="nav-link mt-2" href="{{ URL('/bolsas') }}">Bolsas</a>
                 </li>
                 <li class="nav-item mr-2 d-none d-lg-inline">
-                    <a class="nav-link mt-2" href="#">Intercambios</a>
+                    <a class="nav-link mt-2" href="{{ URL('/intercambios') }}">Intercambios</a>
                 </li>
                 <li class="nav-item mr-2 d-none d-lg-inline">
                     <a class="nav-link mt-2" href="#">Eventos</a>

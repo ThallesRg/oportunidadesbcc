@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Scholarship;
+use App\Models\Intercambio;
 
 class User extends Authenticatable
 {
@@ -62,5 +63,10 @@ class User extends Authenticatable
     public function scholarships()
     {
         return $this->hasMany(Scholarship::class);
+    }
+
+    public function intercambios()
+    {
+        return $this->hasMany(Intercambio::class);
     }
 }

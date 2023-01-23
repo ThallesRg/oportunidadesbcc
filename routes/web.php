@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthorController;
 use App\Http\Controllers\CompanyCategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\IntercambioController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\PostController;
@@ -14,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 //public routes
 Route::get('/', [PostController::class, 'index'])->name('post.index');
-Route::get('/intercambios', [PostController::class, 'index'])->name('post.index');
 Route::get('/eventos', [PostController::class, 'index'])->name('post.index');
 Route::get('/job/{job}', [PostController::class, 'show'])->name('post.show');
 Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('account.employer');
@@ -22,6 +22,10 @@ Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('
 //bolsas de studo
 Route::get('/bolsas', [ScholarshipController::class, 'index'])->name('scholarship.index');
 Route::get('/bolsas/{job}', [ScholarshipController::class, 'show'])->name('scholarship.show');
+
+//Intercambios
+Route::get('/intercambios', [IntercambioController::class, 'index'])->name('intercambio.index');
+Route::get('/intercambios/{intercambio}', [IntercambioController::class, 'show'])->name('intercambios.show');
 
 //return vue page
 Route::get('/search', [JobController::class, 'index'])->name('job.index');
@@ -74,6 +78,12 @@ Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('scholarships/{scholarship}/edit', [ScholarshipController::class, 'edit'])->name('scholarships.edit');
     Route::post('scholarships/{scholarship}', [ScholarshipController::class, 'update'])->name('scholarships.update');
     Route::delete('scholarships/{scholarship}', [ScholarshipController::class, 'destroy'])->name('scholarships.destroy');
+
+    Route::get('intercambios/create', [IntercambioController::class, 'create'])->name('intercambios.create');
+    Route::post('intercambios', [IntercambioController::class, 'store'])->name('intercambios.store');
+    Route::get('intercambios/{intercambio}/edit', [IntercambioController::class, 'edit'])->name('intercambios.edit');
+    Route::post('intercambios/{intercambio}', [IntercambioController::class, 'update'])->name('intercambios.update');
+    Route::delete('intercambios/{intercambio}', [IntercambioController::class, 'destroy'])->name('intercambios.destroy');
 
     Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
     Route::put('company/{id}', [CompanyController::class, 'update'])->name('company.update');
