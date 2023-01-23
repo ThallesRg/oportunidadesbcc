@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Scholarship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ScholarshipController extends Controller
@@ -11,6 +12,10 @@ class ScholarshipController extends Controller
     public function index()
     {
         $scholarships = Scholarship::latest()->get();
+        foreach ($scholarships as $scholarship) {
+            $scholarship->start_date = Carbon::parse($scholarship->start_date)->format('d/m/Y');
+            $scholarship->end_date = Carbon::parse($scholarship->end_date)->format('d/m/Y');
+        }
         return view('scholarships.index', compact('scholarships'));
     }
 
@@ -49,6 +54,8 @@ class ScholarshipController extends Controller
         $scholarship = Scholarship::findOrFail($id);
         $user = $scholarship->user()->first();
 
+        $scholarship->start_date = Carbon::parse($scholarship->start_date)->format('d/m/Y');
+        $scholarship->end_date = Carbon::parse($scholarship->end_date)->format('d/m/Y');
         $similarScholarships = Scholarship::whereHas('user', function ($query) use ($user) {
             return $query->where('id', $user->id);
         })->where('id', '<>', $scholarship->id)->take(5)->get();
@@ -80,15 +87,22 @@ class ScholarshipController extends Controller
         $getScholarship->start_date = $request->input('start_date');
         $getScholarship->end_date = $request->input('end_date');
         $getScholarship->value = $request->input('value');
-        $getScholarship->save();
-
-        return redirect()->route('scholarships.index')->with('success', 'Bolsa de estudo atualizada com sucesso!');
+        if ($getScholarship->save()) {
+            Alert::toast('Bolsa de estudo atualizada com sucesso!', 'success');
+            return redirect()->route('account.authorSection');
+        }
+        Alert::toast('Erro!', 'warning');
+        return redirect()->back();
     }
 
     public function destroy(Scholarship $scholarship)
     {
-        $scholarship->delete();
 
-        return redirect()->route('scholarships.index')->with('success', 'Bolsa de estudo deletada com sucesso!');
+        if ($scholarship->delete()) {
+            Alert::toast('Bolsa de estudo deletada com sucesso!', 'success');
+            return redirect()->route('account.authorSection');
+        }
+        Alert::toast('Erro!', 'warning');
+        return redirect()->back();
     }
 }

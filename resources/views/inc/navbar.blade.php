@@ -10,9 +10,6 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active ">
-                    <a class="nav-link mt-2" href="{{ URL('/') }}">Empregos</a>
-                </li>
                 <li class="nav-item mr-2 d-none d-lg-inline">
                     <a class="nav-link mt-2" href="{{ URL('/bolsas') }}">Bolsas</a>
                 </li>

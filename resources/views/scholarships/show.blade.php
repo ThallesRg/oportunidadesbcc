@@ -1,36 +1,50 @@
 @extends('layouts.post')
 
 @section('content')
-<div class="container mt-5">
-    <div class="card border shadow-sm">
-      <div class="card-header bg-primary text-white">
-        <h4 class="card-title">{{$scholarship->name}}</h4>
-      </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-12">
-            <p class="card-text">{{$scholarship->description}}</p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-6">
-            <h6 class="card-title">Data de início:</h6>
-            <p class="card-text">{{$scholarship->start_date}}</p>
-          </div>
-          <div class="col-md-6">
-            <h6 class="card-title">Data de término:</h6>
-            <p class="card-text">{{$scholarship->end_date}}</p>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <h6 class="card-title">Valor:</h6>
-            <p class="card-text">{{$scholarship->value}}</p>
+<section class="show-page pt-4 mb-5">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-12 col-md-8">
+        <div class="job-listing border">
+          <div class="job-info">
+            <div class="job-hdr p-3">
+              <p class="job-title">{{$scholarship->name}}</p>
+            </div>
+            <div class="job-bdy p-3 my-3">
+              <div class="job-level-description">
+                <p class="font-weight-bold">Descrição da bolsa</p>
+                <table class="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td width="33%">Valor da bolsa</td>
+                      <td width="3%">:</td>
+                      <td width="64%">{{$scholarship->value}}</td>
+                    </tr>
+                    <tr>
+                      <td width="33%">Data de início</td>
+                      <td width="3%">:</td>
+                      <td width="64%">{{$scholarship->start_date}}</td>
+                    </tr>
+                    <tr>
+                      <td width="33%">Data de término</td>
+                      <td width="3%">:</td>
+                      <td width="64%">{{$scholarship->end_date}}</td>
+                    </tr>
+                    <tr>
+                      <td width="33%">Descrição</td>
+                      <td width="3%">:</td>
+                      <td width="64%">{{$scholarship->description}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
 @endsection
 
 @push('css')

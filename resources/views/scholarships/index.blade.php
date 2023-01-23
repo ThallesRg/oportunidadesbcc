@@ -1,19 +1,21 @@
 @extends('layouts.post')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
             @foreach ($scholarships as $scholarship)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h5 class="card-title">{{ $scholarship->name }}</h5>
-                            <p class="card-text">{{ $scholarship->description }}</p>
+                            <p class="card-text">{{ Str::limit($scholarship->description, 80) }}</p>
                             <p class="card-text">
                                 <small class="text-muted">Início: {{ $scholarship->start_date }}</small>
                                 <small class="text-muted">Fim: {{ $scholarship->end_date }}</small>
                             </p>
                             <p class="card-text">Valor: {{ $scholarship->value }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
                             <a href="{{ route('scholarship.show', $scholarship->id) }}" class="btn btn-primary">Ver
                                 Detalhes</a>
                         </div>

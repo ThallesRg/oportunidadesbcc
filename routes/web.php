@@ -71,9 +71,9 @@ Route::middleware('auth')->prefix('account')->group(function () {
 
     Route::get('scholarships/create', [ScholarshipController::class, 'create'])->name('scholarships.create');
     Route::post('scholarships', [ScholarshipController::class, 'store'])->name('scholarships.store');
-    Route::get('scholarships/{post}/edit', [ScholarshipController::class, 'edit'])->name('scholarships.edit');
-    Route::put('scholarships/{post}', [ScholarshipController::class, 'update'])->name('scholarships.update');
-    Route::delete('scholarships/{post}', [ScholarshipController::class, 'destroy'])->name('scholarships.destroy');
+    Route::get('scholarships/{scholarship}/edit', [ScholarshipController::class, 'edit'])->name('scholarships.edit');
+    Route::post('scholarships/{scholarship}', [ScholarshipController::class, 'update'])->name('scholarships.update');
+    Route::delete('scholarships/{scholarship}', [ScholarshipController::class, 'destroy'])->name('scholarships.destroy');
 
     Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
     Route::put('company/{id}', [CompanyController::class, 'update'])->name('company.update');

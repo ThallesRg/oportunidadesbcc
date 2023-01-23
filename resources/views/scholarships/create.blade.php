@@ -26,7 +26,7 @@
                             <label for="">Descrição</label>
                             <textarea type="text" placeholder="Descrição da bolsa de estudo"
                                 class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"
-                                required autofocus></textarea>
+                                required autofocus style="height: 200px;"></textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

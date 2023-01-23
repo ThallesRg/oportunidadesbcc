@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use App\Models\JobApplication;
+use App\Models\Scholarship;
 use Carbon\Carbon;
 
 class AuthorController extends Controller
@@ -15,6 +16,7 @@ class AuthorController extends Controller
         $livePosts = null;
         $company = null;
         $applications = null;
+        $scholarships = Scholarship::where('user_id', auth()->user()->id)->latest()->get();
 
         if ($this->hasCompany()) {
             //without the if block the posts relationship returns error
@@ -32,7 +34,8 @@ class AuthorController extends Controller
         return view('account.author-section')->with([
             'company' => $company,
             'applications' => $applications,
-            'livePosts' => $livePosts
+            'livePosts' => $livePosts,
+            'scholarships' => $scholarships
         ]);
     }
 

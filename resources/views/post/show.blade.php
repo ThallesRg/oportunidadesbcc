@@ -73,7 +73,7 @@
                     <tr>
                       <td width="33%">Aplique até</td>
                       <td width="3%">:</td>
-                      <td width="64%" class="text-danger">{{date('d/m/Y',$post->deadlineTimestamp())}} ({{ date('d',$post->remainingDays())}} dias restantes)</td>
+                      <td width="64%" class="text-danger">{{date('d/m/Y',$post->deadlineTimestamp())}} ({$post->remainingDays()}} dias restantes)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -171,6 +171,7 @@
     </div>
   </div>
 </section>
+
 @endsection
 
 @push('css')
