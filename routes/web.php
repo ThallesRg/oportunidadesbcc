@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AdminController;
 use App\Http\Controllers\Auth\AuthorController;
 use App\Http\Controllers\CompanyCategoryController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\IntercambioController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //public routes
 Route::get('/', [PostController::class, 'index'])->name('post.index');
-Route::get('/eventos', [PostController::class, 'index'])->name('post.index');
+
 Route::get('/job/{job}', [PostController::class, 'show'])->name('post.show');
 Route::get('employer/{employer}', [AuthorController::class, 'employer'])->name('account.employer');
 
@@ -26,6 +27,10 @@ Route::get('/bolsas/{job}', [ScholarshipController::class, 'show'])->name('schol
 //Intercambios
 Route::get('/intercambios', [IntercambioController::class, 'index'])->name('intercambio.index');
 Route::get('/intercambios/{intercambio}', [IntercambioController::class, 'show'])->name('intercambios.show');
+
+//Eventos
+Route::get('/eventos', [EventController::class, 'index'])->name('events.index');
+Route::get('/eventos/{evento}', [EventController::class, 'show'])->name('events.show');
 
 //return vue page
 Route::get('/search', [JobController::class, 'index'])->name('job.index');
@@ -84,6 +89,12 @@ Route::middleware('auth')->prefix('account')->group(function () {
     Route::get('intercambios/{intercambio}/edit', [IntercambioController::class, 'edit'])->name('intercambios.edit');
     Route::post('intercambios/{intercambio}', [IntercambioController::class, 'update'])->name('intercambios.update');
     Route::delete('intercambios/{intercambio}', [IntercambioController::class, 'destroy'])->name('intercambios.destroy');
+
+    Route::get('eventos/create', [EventController::class, 'create'])->name('events.create');
+    Route::post('eventos', [EventController::class, 'store'])->name('events.store');
+    Route::get('eventos/{evento}/edit', [EventController::class, 'edit'])->name('events.edit');
+    Route::post('eventos/{evento}', [EventController::class, 'update'])->name('events.update');
+    Route::delete('eventos/{evento}', [EventController::class, 'destroy'])->name('events.destroy');
 
     Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
     Route::put('company/{id}', [CompanyController::class, 'update'])->name('company.update');

@@ -29,6 +29,10 @@
       <a href="{{route('intercambios.create')}}" class="account-nav-link">
         <i class="fas fa-plus-square"></i> Criar intercambio
     </li>
+    <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'eventos' && request()->segment(3) == 'create' ? 'active': ''}}">
+      <a href="{{route('events.create')}}" class="account-nav-link">
+        <i class="fas fa-plus-square"></i> Criar evento
+    </li>
     @endrole
     <li class="list-group-item list-group-item-action {{ request()->segment(2) == 'overview' ? 'active': ''}}">
       <a href="{{route('account.index')}}" class="account-nav-link">

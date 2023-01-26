@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Scholarship;
 use App\Models\Intercambio;
+use App\Models\Event;
 
 class User extends Authenticatable
 {
@@ -68,5 +69,10 @@ class User extends Authenticatable
     public function intercambios()
     {
         return $this->hasMany(Intercambio::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }
