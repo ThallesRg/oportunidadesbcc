@@ -69,7 +69,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Website</label>
-                            <input type="text" placeholder="website"
+                            <input type="text" placeholder="https://meusite.com"
                                 class="form-control @error('website') is-invalid @enderror" name="website"
                                 value="{{ old('website') }}" >
                             @error('website')

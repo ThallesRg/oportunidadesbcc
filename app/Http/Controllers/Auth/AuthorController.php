@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Event;
 use App\Models\JobApplication;
 use App\Models\Scholarship;
 use App\Models\Intercambio;
@@ -37,6 +38,15 @@ class AuthorController extends Controller
                 return $intercambio;
             });
 
+            $events = Event::where('user_id', auth()->user()->id)
+                ->latest()
+                ->get()
+                ->map(function ($event) {
+                $event->start_date = Carbon::parse($event->start_date)->format('d/m/Y');
+                $event->end_date = Carbon::parse($event->end_date)->format('d/m/Y');
+                return $event;
+                });
+
         if ($this->hasCompany()) {
             //without the if block the posts relationship returns error
             $company = auth()->user()->company;
@@ -49,13 +59,15 @@ class AuthorController extends Controller
             }
         }
 
-        //doesnt have company
+
+
         return view('account.author-section')->with([
             'company' => $company,
             'applications' => $applications,
             'livePosts' => $livePosts,
             'scholarships' => $scholarships,
-            'intercambios' => $intercambios
+            'intercambios' => $intercambios,
+            'events' => $events
         ]);
     }
 

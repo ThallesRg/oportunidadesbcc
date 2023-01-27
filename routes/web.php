@@ -30,7 +30,7 @@ Route::get('/intercambios/{intercambio}', [IntercambioController::class, 'show']
 
 //Eventos
 Route::get('/eventos', [EventController::class, 'index'])->name('events.index');
-Route::get('/eventos/{evento}', [EventController::class, 'show'])->name('events.show');
+Route::get('/eventos/{event}', [EventController::class, 'show'])->name('events.show');
 
 //return vue page
 Route::get('/search', [JobController::class, 'index'])->name('job.index');
@@ -92,9 +92,9 @@ Route::middleware('auth')->prefix('account')->group(function () {
 
     Route::get('eventos/create', [EventController::class, 'create'])->name('events.create');
     Route::post('eventos', [EventController::class, 'store'])->name('events.store');
-    Route::get('eventos/{evento}/edit', [EventController::class, 'edit'])->name('events.edit');
-    Route::post('eventos/{evento}', [EventController::class, 'update'])->name('events.update');
-    Route::delete('eventos/{evento}', [EventController::class, 'destroy'])->name('events.destroy');
+    Route::get('eventos/{event}/edit', [EventController::class, 'edit'])->name('events.edit');
+    Route::post('eventos/{event}', [EventController::class, 'update'])->name('events.update');
+    Route::delete('eventos/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 
     Route::get('company/create', [CompanyController::class, 'create'])->name('company.create');
     Route::put('company/{id}', [CompanyController::class, 'update'])->name('company.update');

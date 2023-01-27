@@ -13,7 +13,7 @@
                                 <small class="text-muted">Data de Início: {{ $event->start_date }}</small>
                             </p>
                             <p class="card-text">
-                                <small class="text-muted">Data de Fim: {{ $event->end_date }}</small>
+                                <small class="text-muted">Data de Término: {{ $event->end_date }}</small>
                             </p>
                             <p class="card-text">Local: {{ $event->location }}</p>
                             <p class="card-text">Website: {{ $event->website }}</p>

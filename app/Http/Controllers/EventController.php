@@ -4,17 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class EventController extends Controller
 {
     public function index()
-    {
-        $events = Event::latest()->get();
+{
+    $events = Event::latest()->get();
 
-        return view('events.index', compact('events'));
+    foreach($events as $event) {
+        $event->start_date = Carbon::parse($event->start_date)->format('d/m/Y');
+        $event->end_date = Carbon::parse($event->end_date)->format('d/m/Y');
     }
 
+    return view('events.index', compact('events'));
+}
     public function create()
     {
         return view('events.create');
@@ -27,7 +32,7 @@ class EventController extends Controller
             'location' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'website' => 'nullable|string|max:255',
+            'website' => 'nullable|url',
             'description' => 'required|string',
         ]);
 
@@ -45,6 +50,8 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
+        $event->start_date = Carbon::parse($event->start_date)->format('d/m/Y');
+        $event->end_date = Carbon::parse($event->end_date)->format('d/m/Y');
         return view('events.show', compact('event'));
     }
 
@@ -60,13 +67,13 @@ class EventController extends Controller
             'location' => 'required|string|max:255',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'website' => 'nullable|string|max:255',
+            'website' => 'nullable|url',
             'description' => 'required|string',
         ]);
 
         if ($event->update($validatedData)) {
             Alert::toast('Evento atualizado com sucesso!', 'success');
-            return redirect()->route('events.index');
+            return redirect()->route('account.authorSection');
         }
 
         Alert::toast('Erro!', 'warning');
@@ -75,8 +82,11 @@ class EventController extends Controller
 
     public function destroy(Event $event)
     {
-        $event->delete();
-
-        return redirect()->route('events.index');
+        if ($event->delete()) {
+            Alert::toast('Evento deletado com sucesso!', 'success');
+            return redirect()->route('account.authorSection');
+        }
+        Alert::toast('Erro!', 'warning');
+        return redirect()->back();
     }
 }
