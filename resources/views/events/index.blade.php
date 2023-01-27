@@ -1,9 +1,17 @@
 @extends('layouts.post')
 
 @section('content')
-    <div class="container mt-3">
-        <div class="row">
-            @foreach ($events as $event)
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Eventos vigentes</h5>
+                </div>
+            </div>
+        </div>
+        @foreach ($events as $event)
+            @if(Carbon\Carbon::createFromFormat('d/m/Y', $event->end_date)->isFuture())
                 <div class="col-md-4 mb-4">
                     <div class="card h-100">
                         <div class="card-body">
@@ -19,14 +27,44 @@
                             <p class="card-text">Website: {{ $event->website }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
-                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Ver
-                                Detalhes</a>
+                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Ver Detalhes</a>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endif
+        @endforeach
+        <div class="col-md-12 mb-4">
+            <div class="card bg-secondary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Eventos passados</h5>
+                </div>
+            </div>
         </div>
+        @foreach ($events as $event)
+            @if(Carbon\Carbon::createFromFormat('d/m/Y', $event->end_date)->isPast())
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $event->name }}</h5>
+                            <p class="card-text">{{ Str::limit($event->description, 80) }}</p>
+                            <p class="card-text">
+                                <small class="text-muted">Data de Início: {{ $event->start_date }}</small>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">Data de Término: {{ $event->end_date }}</small>
+                            </p>
+                            <p class="card-text">Local: {{ $event->location }}</p>
+                            <p class="card-text">Website: {{ $event->website }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Ver Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        @endforeach
     </div>
+</div>
 @endsection
 
 
