@@ -3,27 +3,75 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            @foreach ($intercambios as $intercambio)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $intercambio->name }}</h5>
-                            <p class="card-text">{{ Str::limit($intercambio->description, 80) }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">Período de Inscrição: {{ $intercambio->registration_period_start_date }} - {{ $intercambio->registration_period_end_date }}</small>
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">Período de Intercâmbio: {{ $intercambio->exchange_period_start_date }} - {{ $intercambio->exchange_period_end_date }}</small>
-                            </p>
-                            <p class="card-text">Destino: {{ $intercambio->destination }}</p>
-                            <p class="card-text">Vagas: {{ $intercambio->vacancies }}</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <a href="{{ route('intercambios.show', $intercambio->id) }}" class="btn btn-primary">Ver
-                                Detalhes</a>
-                        </div>
+            <div class="col-md-12 mb-4">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Intercâmbios vigentes</h5>
                     </div>
                 </div>
+            </div>
+            @foreach ($intercambios as $intercambio)
+                @if (Carbon\Carbon::createFromFormat('d/m/Y', $intercambio->registration_period_end_date)->isFuture())
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $intercambio->name }}</h5>
+                                <p class="card-text">{{ Str::limit($intercambio->description, 80) }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Período de Inscrição:
+                                        {{ $intercambio->registration_period_start_date }} -
+                                        {{ $intercambio->registration_period_end_date }}</small>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">Período de Intercâmbio:
+                                        {{ $intercambio->exchange_period_start_date }} -
+                                        {{ $intercambio->exchange_period_end_date }}</small>
+                                </p>
+                                <p class="card-text">Destino: {{ $intercambio->destination }}</p>
+                                <p class="card-text">Vagas: {{ $intercambio->vacancies }}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="{{ route('intercambios.show', $intercambio->id) }}" class="btn btn-primary">Ver
+                                    Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            <div class="col-md-12 mb-4">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Intercâmbios passados</h5>
+                    </div>
+                </div>
+            </div>
+            @foreach ($intercambios as $intercambio)
+                @if (Carbon\Carbon::createFromFormat('d/m/Y', $intercambio->registration_period_end_date)->isPast())
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $intercambio->name }}</h5>
+                                <p class="card-text">{{ Str::limit($intercambio->description, 80) }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Período de Inscrição:
+                                        {{ $intercambio->registration_period_start_date }} -
+                                        {{ $intercambio->registration_period_end_date }}</small>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">Período de Intercâmbio:
+                                        {{ $intercambio->exchange_period_start_date }} -
+                                        {{ $intercambio->exchange_period_end_date }}</small>
+                                </p>
+                                <p class="card-text">Destino: {{ $intercambio->destination }}</p>
+                                <p class="card-text">Vagas: {{ $intercambio->vacancies }}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="{{ route('intercambios.show', $intercambio->id) }}" class="btn btn-primary">Ver
+                                    Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>

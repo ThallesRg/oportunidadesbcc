@@ -117,16 +117,9 @@ class AccountController extends Controller
     public function deleteAccount()
     {
         $user = User::find(auth()->user()->id);
-        $company = $user->company;
-        $posts = $user->company->posts;
-
-        foreach($posts as $post) {
-            $post->delete();
-        }
-        $company->delete();
         Auth::logout($user->id);
         if ($user->delete()) {
-            Alert::toast('Sua conta com a empresa e todas as suas vagas foram deletada com sucesso!', 'info');
+            Alert::toast('Sua conta foi deletada com sucesso!', 'info');
             return redirect(route('post.index'));
         } else {
             return view('account.deactivate');

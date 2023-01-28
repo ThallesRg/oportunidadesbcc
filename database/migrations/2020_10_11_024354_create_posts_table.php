@@ -29,6 +29,8 @@ class CreatePostsTable extends Migration
             $table->text('specifications');
             $table->unsignedMediumInteger('views')->default(1);
             $table->timestamps();
+
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
         });
     }
 

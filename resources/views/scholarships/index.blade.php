@@ -3,24 +3,65 @@
 @section('content')
     <div class="container mt-3">
         <div class="row">
-            @foreach ($scholarships as $scholarship)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $scholarship->name }}</h5>
-                            <p class="card-text">{{ Str::limit($scholarship->description, 80) }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">Início: {{ $scholarship->start_date }}</small>
-                                <small class="text-muted">Fim: {{ $scholarship->end_date }}</small>
-                            </p>
-                            <p class="card-text">Valor: {{ $scholarship->value }}</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <a href="{{ route('scholarship.show', $scholarship->id) }}" class="btn btn-primary">Ver
-                                Detalhes</a>
-                        </div>
+            <div class="col-md-12 mb-4">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Bolsas vigentes</h5>
                     </div>
                 </div>
+            </div>
+            @foreach ($scholarships as $scholarship)
+                @if (Carbon\Carbon::createFromFormat('d/m/Y', $scholarship->end_date)->isFuture())
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $scholarship->name }}</h5>
+                                <p class="card-text">{{ Str::limit($scholarship->description, 80) }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Data de Início: {{ $scholarship->start_date }}</small>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">Data de Término: {{ $scholarship->end_date }}</small>
+                                </p>
+                                <p class="card-text">Valor: {{ $scholarship->value }}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="{{ route('scholarship.show', $scholarship->id) }}" class="btn btn-primary">Ver
+                                    Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            <div class="col-md-12 mb-4">
+                <div class="card bg-secondary text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Bolsas passadas</h5>
+                    </div>
+                </div>
+            </div>
+            @foreach ($scholarships as $scholarship)
+                @if (Carbon\Carbon::createFromFormat('d/m/Y', $scholarship->end_date)->isPast())
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $scholarship->name }}</h5>
+                                <p class="card-text">{{ Str::limit($scholarship->description, 80) }}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">Data de Início: {{ $scholarship->start_date }}</small>
+                                </p>
+                                <p class="card-text">
+                                    <small class="text-muted">Data de Término: {{ $scholarship->end_date }}</small>
+                                </p>
+                                <p class="card-text">Valor: {{ $scholarship->value }}</p>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="{{ route('scholarship.show', $scholarship->id) }}" class="btn btn-primary">Ver
+                                    Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>

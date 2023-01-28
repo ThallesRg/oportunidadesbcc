@@ -23,6 +23,8 @@ class CreateCompaniesTable extends Migration
             $table->string('website');
             $table->string('cover_img');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
