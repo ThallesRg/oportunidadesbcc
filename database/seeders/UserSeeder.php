@@ -22,21 +22,21 @@ class UserSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'admin@admin.com',
-                'password' => '$2y$10$Lq7XgREO7A5qRp6HlLOKIeITo3Sf5lFLaD53DKXmqHn4y9Av8qSNu', // password
+                'password' => '$2y$10$srYFNFP1i6AfTl9lc7WpDOVdYdqcZZHpbaRxR9y4i3Z/C1AknPDMm', // passworddcm
                 'role' => 'admin'
             ],
 
             [
                 'name' => 'autor',
                 'email' => 'autor@autor.com',
-                'password' => '$2y$10$Lq7XgREO7A5qRp6HlLOKIeITo3Sf5lFLaD53DKXmqHn4y9Av8qSNu', // password
+                'password' => '$2y$10$srYFNFP1i6AfTl9lc7WpDOVdYdqcZZHpbaRxR9y4i3Z/C1AknPDMm', // passworddcm
                 'role' => 'author'
             ],
 
             [
                 'name' => 'simples',
                 'email' => 'user@user.com',
-                'password' => '$2y$10$Lq7XgREO7A5qRp6HlLOKIeITo3Sf5lFLaD53DKXmqHn4y9Av8qSNu', // password
+                'password' => '$2y$10$srYFNFP1i6AfTl9lc7WpDOVdYdqcZZHpbaRxR9y4i3Z/C1AknPDMm', // passworddcm
                 'role' => 'user'
             ],
         ];
