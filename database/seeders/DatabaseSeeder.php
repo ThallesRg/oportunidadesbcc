@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CompanySeeder::class,
             IntercambioSeeder::class,
-            EventSeeder::class
+            EventSeeder::class,
+            ScholarshipsSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }
