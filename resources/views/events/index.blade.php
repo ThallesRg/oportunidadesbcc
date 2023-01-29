@@ -24,7 +24,6 @@
                                 <small class="text-muted">Data de Término: {{ $event->end_date }}</small>
                             </p>
                             <p class="card-text">Local: {{ $event->location }}</p>
-                            <p class="card-text">Website: {{ $event->website }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Ver Detalhes</a>
@@ -54,7 +53,6 @@
                                 <small class="text-muted">Data de Término: {{ $event->end_date }}</small>
                             </p>
                             <p class="card-text">Local: {{ $event->location }}</p>
-                            <p class="card-text">Website: {{ $event->website }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-end">
                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Ver Detalhes</a>

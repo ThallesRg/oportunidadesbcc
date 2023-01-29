@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             UserSeeder::class,
             CompanySeeder::class,
-            IntercambioSeeder::class
+            IntercambioSeeder::class,
+            EventSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
     }
