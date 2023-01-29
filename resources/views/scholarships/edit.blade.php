@@ -9,7 +9,8 @@
             <p class="text-primary mb-4">Preencha todos os campos para editar a bolsa de estudo</p>
             <div class="row mb-3">
                 <div class="col-sm-12 col-md-12">
-                    <form action="{{route('scholarships.update',['scholarship'=>$scholarship])}}" id="postForm" method="POST">
+                    <form action="{{ route('scholarships.update', ['scholarship' => $scholarship]) }}" id="postForm"
+                        method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="">Nome</label>
@@ -25,8 +26,8 @@
                         <div class="form-group">
                             <label for="">Descrição</label>
                             <textarea type="text" placeholder="Descrição da bolsa de estudo"
-                                class="form-control @error('description') is-invalid @enderror" name="description" 
-                                required autofocus style="height: 200px;">{{ old('description', $scholarship->description) }}</textarea>
+                                class="form-control @error('description') is-invalid @enderror" name="description" required autofocus
+                                style="height: 200px;">{{ old('description', $scholarship->description) }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -39,7 +40,8 @@
                                 <div class="col-md-6">
                                     <label for="">Data de início</label>
                                     <input type="date" class="form-control @error('start_date') is-invalid @enderror"
-                                        name="start_date" value="{{ old('start_date', $scholarship->start_date) }}" required>
+                                        name="start_date" value="{{ old('start_date', $scholarship->start_date) }}"
+                                        required>
                                     @error('start_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -70,53 +72,64 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="">Website</label>
+                            <input type="text" placeholder="https://meusite.com.br"
+                                class="form-control @error('website') is-invalid @enderror" name="website"
+                                value="{{ old('website', $scholarship->website) }}" required>
+                            @error('website')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <button type="button" id="postBtn" class="btn primary-btn">Editar bolsa</button>
-                        <a href="{{route('account.authorSection')}}" class="btn danger-btn">Cancelar</a>
+                        <a href="{{ route('account.authorSection') }}" class="btn danger-btn">Cancelar</a>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    @endSection
+@endSection
 
-    @push('css')
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    @endpush
+@push('css')
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+@endpush
 
-    @push('js')
-        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-        <script>
-            $(document).ready(function() {
-                var quill = new Quill('#quillEditor', {
-                    modules: {
-                        toolbar: [
-                            [{
-                                'font': []
-                            }, {
-                                'size': []
-                            }],
-                            ['bold', 'italic'],
-                            [{
-                                list: 'ordered'
-                            }, {
-                                list: 'bullet'
-                            }],
-                            ['link', 'blockquote', 'code-block', 'image'],
-                        ]
-                    },
-                    placeholder: 'Requisitos do trabalho , Especificaçoes... etc ...',
-                    theme: 'snow'
-                });
+@push('js')
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        $(document).ready(function() {
+            var quill = new Quill('#quillEditor', {
+                modules: {
+                    toolbar: [
+                        [{
+                            'font': []
+                        }, {
+                            'size': []
+                        }],
+                        ['bold', 'italic'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        ['link', 'blockquote', 'code-block', 'image'],
+                    ]
+                },
+                placeholder: 'Requisitos do trabalho , Especificaçoes... etc ...',
+                theme: 'snow'
+            });
 
 
-                const postBtn = document.querySelector('#postBtn');
-                const postForm = document.querySelector('#postForm');
+            const postBtn = document.querySelector('#postBtn');
+            const postForm = document.querySelector('#postForm');
 
-                postBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
+            postBtn.addEventListener('click', function(e) {
+                e.preventDefault();
 
-                    postForm.submit();
-                })
+                postForm.submit();
             })
-        </script>
-    @endpush
+        })
+    </script>
+@endpush

@@ -32,14 +32,15 @@ class ScholarshipController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'value' => 'required|numeric',
+            'website' => 'nullable|url'
         ]);
-
         $scholarship = new Scholarship();
         $scholarship->name = $request->input('name');
         $scholarship->description = $request->input('description');
         $scholarship->start_date = $request->input('start_date');
         $scholarship->end_date = $request->input('end_date');
         $scholarship->value = $request->input('value');
+        $scholarship->website = $request->input('website');
         $scholarship->user_id = auth()->user()->id;
         if ($scholarship->save()) {
             Alert::toast('Bolsa de estudo criada com sucesso!', 'success');
@@ -79,6 +80,7 @@ class ScholarshipController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'value' => 'required|numeric',
+            'website' => 'nullable|url'
         ]);
 
         $getScholarship = Scholarship::findOrFail($scholarship);
@@ -87,6 +89,7 @@ class ScholarshipController extends Controller
         $getScholarship->start_date = $request->input('start_date');
         $getScholarship->end_date = $request->input('end_date');
         $getScholarship->value = $request->input('value');
+        $getScholarship->website = $request->input('website');
         if ($getScholarship->save()) {
             Alert::toast('Bolsa de estudo atualizada com sucesso!', 'success');
             return redirect()->route('account.authorSection');

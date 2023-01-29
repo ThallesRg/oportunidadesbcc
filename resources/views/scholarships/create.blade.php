@@ -70,6 +70,15 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="">Website</label>
+                            <input type="text" placeholder="https://meusite.com.br" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ old('website') }}" required>
+                            @error('website')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <button type="button" id="postBtn" class="btn primary-btn">Criar bolsa</button>
                         <a href="{{route('account.authorSection')}}" class="btn danger-btn">Cancelar</a>
                     </form>

@@ -35,6 +35,11 @@
                       <td width="3%">:</td>
                       <td width="64%">{{$scholarship->description}}</td>
                     </tr>
+                    <tr>
+                      <td width="33%">Site</td>
+                      <td width="3%">:</td>
+                      <td width="64%"><a href="{{$scholarship->website}}" style="text-decoration: underline; color: blue">{{$scholarship->website}}</a></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

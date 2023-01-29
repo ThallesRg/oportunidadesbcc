@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 class Scholarship extends Model
 {
     protected $fillable = [
-        'name', 'description', 'start_date', 'end_date', 'value', 'user_id'
+        'name', 'description', 'start_date', 'end_date', 'value', 'website', 'user_id'
     ];
 
     public function user()

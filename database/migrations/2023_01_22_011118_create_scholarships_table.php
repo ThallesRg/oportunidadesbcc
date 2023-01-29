@@ -16,6 +16,7 @@ class CreateScholarshipsTable extends Migration
         Schema::create('scholarships', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('website')->nullable();
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
