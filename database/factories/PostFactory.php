@@ -33,6 +33,7 @@ class PostFactory extends Factory
             'salary' => '20k - 50k',
             'skills' => 'Team player, Active listener',
             'specifications' => '<p></p>',
+            'link' => 'https://www.site.com',
         ];
     }
 }

@@ -27,7 +27,7 @@ class CreatePostsTable extends Migration
             $table->string('experience');
             $table->string('skills');
             $table->text('specifications');
-            $table->unsignedMediumInteger('views')->default(1);
+            $table->string('link');
             $table->timestamps();
 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
