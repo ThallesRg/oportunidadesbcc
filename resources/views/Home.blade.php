@@ -54,7 +54,7 @@
                 <div class="col-sm-12 col-md-7 ml-auto">
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-title font-weight-bold"><i class="fas fa-briefcase"></i> Últimas Vagas</p>
+                            <p class="card-title font-weight-bold"><i class="fas fa-briefcase"></i> Últimas Vagas </p>
                         </div>
                         <div class="card-body">
                             <div class="top-jobs">

@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Descrição</label>
-                            <textarea type="text" placeholder="Descrição da bolsa de estudo"
+                            <textarea type="text" placeholder="Descrição da bolsa de estudo" wrap="soft"
                                 class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"
                                 required autofocus style="height: 200px;"></textarea>
                             @error('description')

@@ -37,8 +37,10 @@ class Post extends Model
     public function remainingDays()
     {
         $deadline = $this->deadline;
-        $timestamp = Carbon::parse($deadline)->timestamp - Carbon::now()->timestamp;
-        return $timestamp;
+        $deadline = Carbon::parse($deadline);
+        $today = Carbon::now();
+        $daysLeft = $today->diffInDays($deadline, false);
+        return $daysLeft;
     }
 
     public function getSkills()

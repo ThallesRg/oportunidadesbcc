@@ -130,14 +130,16 @@
                                                         title="Go to this post">{{ $post->job_title }}</a></td>
                                                 <td>{{ $post->job_level }}</td>
                                                 <td>{{ $post->vacancy_count }}</td>
-                                                <td>@php
-                                                    $date = new DateTime($post->deadline);
-                                                    $timestamp = $date->getTimestamp();
-                                                    $dayMonthYear = date('d/m/Y', $timestamp);
-                                                    $daysLeft = date('d', $timestamp - time()) . ' dias restantes';
-                                                    echo "$dayMonthYear <br> <span class='text-danger'> $daysLeft </span>";
-                                                @endphp</td>
-                                                <td>
+                                                @if($post->remainingDays() > 0)
+                                                    <td>{{date('d/m/Y',strtotime($post->deadline))}} <br> 
+                                                        <span class='text-danger'> {{$post->remainingDays()}} dias restantes </span> 
+                                                    </td>
+                                                @else
+                                                    <td>{{date('d/m/Y',strtotime($post->deadline))}} <br> 
+                                                        <span class='text-danger'> Esta vaga expirou </span> 
+                                                    </td>
+                                                @endif
+                                                 <td>
                                                     <a href="{{ route('post.edit', ['post' => $post]) }}"
                                                         class="btn primary-btn">Editar</a>
                                                     <form action="{{ route('post.destroy', ['post' => $post->id]) }}"

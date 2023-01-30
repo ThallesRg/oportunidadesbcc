@@ -10,16 +10,16 @@ use App\Models\Intercambio;
 use App\Models\Post;
 use App\Models\Scholarship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->take(20)->with('company')->get();
+        $posts = Post::where("deadline", ">", Carbon::now())->latest()->take(20)->with('company')->get();
         $categories = CompanyCategory::take(5)->get();
         $topEmployers = Company::latest()->take(3)->get();
-
         $latestIntercambio = Intercambio::latest()->first();
         $latestEvent = Event::latest()->first();
         $latestScholarship = Scholarship::latest()->first();
@@ -68,13 +68,14 @@ class PostController extends Controller
 
         $similarPosts = Post::whereHas('company', function ($query) use ($company) {
             return $query->where('company_category_id', $company->company_category_id);
-        })->where('id', '<>', $post->id)->with('company')->take(5)->get();
+        })->where('id', '<>', $post->id)->where('deadline', '>', Carbon::now())->with('company')->take(5)->get();
         return view('post.show')->with([
             'post' => $post,
             'company' => $company,
             'similarJobs' => $similarPosts
         ]);
     }
+
 
     public function edit(Post $post)
     {

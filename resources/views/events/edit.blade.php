@@ -25,9 +25,9 @@
                         </div>
                         <div class="form-group">
                             <label for="">Descrição</label>
-                            <textarea type="text" placeholder="Descrição do evento"
-                                class="form-control @error('description') is-invalid @enderror" name="description" required autofocus
-                                style="height: 200px;">{{ old('description') ? old('description') : $event->description }}</textarea>
+                            <textarea type="text" placeholder="Descrição do evento" wrap="soft"
+                                class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}"
+                                required autofocus style="height: 200px;">{{ old('description') ? old('description') : $event->description }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

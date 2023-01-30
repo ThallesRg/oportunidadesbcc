@@ -21,29 +21,16 @@
           <div class="col-sm-12 col-md-12 col-12 col-lg-12">
             <div class="row align-items-center text-center text-lg-left">
               <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 pt-2 mx-auto">
-                <img
-                  class="border p-2 img-fluid"
-                  :src="`/${post.company.logo}`"
-                  width="100px"
-                />
+                <img class="border p-2 img-fluid" :src="`/${post.company.logo}`" width="100px" />
               </div>
-              <div
-                class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pl-0 pl-md-2 pb-2"
-              >
+              <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 pl-0 pl-md-2 pb-2">
                 <h5 class="secondary-link font-weight-bold">
-                  <a
-                    :href="`/job/${post.id}-${post.job_title}`"
-                    target="_blank"
-                  >
+                  <a :href="`/job/${post.id}-${post.job_title}`" target="_blank">
                     {{ post.job_title }}
                   </a>
                 </h5>
                 <h6 class="mt-2">
-                  <a
-                    :href="`/employer/${post.company.id}-${post.company.title}`"
-                    target="_blank"
-                    class="text-dark"
-                  >
+                  <a :href="`/employer/${post.company.id}-${post.company.title}`" target="_blank" class="text-dark">
                     {{ post.company.title }}
                   </a>
                 </h6>
@@ -66,9 +53,9 @@
         <div class="card-footer py-2">
           <div class="d-inline">
             <span class="text-muted">
-              <i class="fas fa-clock"></i> Aplique Antes De:
-              {{ post.deadline.slice(0, -9) }}</span
-            >
+              <i class="fas fa-clock"></i> Aplique até:
+              {{ post.deadline.slice(8,10) + '/' + post.deadline.slice(5,7) + '/' + post.deadline.slice(0,4) }}
+            </span>
           </div>
         </div>
       </div>
@@ -84,4 +71,5 @@ export default {
 </script>
 
 <style>
+
 </style>

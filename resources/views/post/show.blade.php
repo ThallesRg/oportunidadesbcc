@@ -36,7 +36,11 @@
               <p class="job-title">{{$post->job_title}}</p>
               <div class="">
                 <p class="job-views">
-                  <span class="text-danger">Se candidate em até: {{date('d',$post->remainingDays())}} dias</span>
+                  @if($post->remainingDays() > 0)
+                    <span class="text-danger">Se candidate em até: {{$post->remainingDays()}} dia(s)</span>
+                  @else
+                    <span class="text-danger">Esta vaga expirou</span>
+                  @endif
                 </p>
               </div>
             </div>
@@ -73,7 +77,11 @@
                     <tr>
                       <td width="33%">Aplique até</td>
                       <td width="3%">:</td>
-                      <td width="64%" class="text-danger">{{date('d/m/Y',$post->deadlineTimestamp())}} ({$post->remainingDays()}} dias restantes)</td>
+                      @if($post->remainingDays() > 0)
+                        <td width="64%" class="text-danger">{{date('d/m/Y',strtotime($post->deadline))}} - {{$post->remainingDays()}} dia(s) restantes</td>
+                      @else
+                        <td width="64%" class="text-danger">Esta vaga expirou</td>
+                      @endif
                     </tr>
                   </tbody>
                 </table>
@@ -105,7 +113,7 @@
                 </table>
               </div>
               <div class="job-level-description">
-                {{-- <p class="font-weight-bold">More Specifications</p> --}}
+                <p class="font-weight-bold">Mais Detalhes</p>
                 <p class="py-2">{!!$post->specifications!!}</p>
               </div>
               <br>
@@ -114,12 +122,6 @@
                 <div>
                   <a href="{{$post->link}}" class="btn primary-btn">Aplicar agora</a>
                 </div>
-                <!-- <div class="social-links">
-                  <a href="https://www.facebook.com"  target="_blank" class="btn btn-primary"><i class="fab fa-facebook"></i></a>
-                  <a href="https://www.twitter.com" target="_blank"  class="btn btn-primary"><i class="fab fa-twitter"></i></a>
-                  <a href="https://www.linkedin.com"  target="_blank" class="btn btn-primary"><i class="fab fa-linkedin"></i></a>
-                  <a href="https://www.gmail.com" target="_blank"  class="btn btn-primary"><i class="fas fa-envelope"></i></a>
-                </div> -->
               </div>
             </div>
           </div>
@@ -152,14 +154,14 @@
                     <a href="{{route('post.show',['job'=>$job->id])}}" class="job-category text-muted font-weight-bold">
                       <p class="text-muted h6">{{$job->job_title}}</p>
                       <p class="small">{{$job->company->title}}</p>
-                      <p class="font-weight-normal small text-danger">Tempo restante: {{date('d',$job->remainingDays())}} days</p>
+                      <p class="font-weight-normal small text-danger">Tempo restante: {{$job->remainingDays()}} dia(s)</p>
                     </a>
                   </div>
                 </div>
                 @else
                 <div class="card">
                   <div class="card-header">
-                    <p>No similar jobs</p>
+                    <p>Sem vagas similares disponíveis no momento</p>
                   </div>
                 </div>
                 @endif
