@@ -1,7 +1,7 @@
 <div class="login-banner d-none d-md-block border-top">
   <div class="container p-3">
     <div class="d-flex justify-content-center align-items-center">
-      <p class="login-banner-text mr-5">Colocar uma frase bonitinha =)</p>
+      <p class="login-banner-text mr-5">Transforme o seu sonho em realidade, encontre aqui a oportunidade perfeita para você <3 </p>
     </div>
   </div>
 </div>

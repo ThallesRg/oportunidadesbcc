@@ -7,10 +7,10 @@
             <h5 class="lead footer-hdr">Links relevantes</h5>
             <div class="line-divider"></div>
             <div class="footer-link-list">
-             <a href="#" class="footer-links">Link1</a>
-             <a href="#" class="footer-links">Link2</a>
-             <a href="#" class="footer-links">Link3</a>
-             <a href="#" class="footer-links">Link4</a>
+             <a href="https://dcm.ffclrp.usp.br/" target="_blank" class="footer-links">Departamento de Computação e Matemática (DCM)</a>
+             <a href="https://www.ffclrp.usp.br/" target="_blank"class="footer-links">Faculdade de Filosofia Ciênias e Letras de Ribeirão Preto (FFCLRP)</a>
+             <a href="https://www.prefeiturarp.usp.br/" target="_blank"class="footer-links">Prefeitura do campus USP de Ribeirão Preto (PUSP)</a>
+             <a href="https://uspdigital.usp.br/jupiterweb/" target="_blank"class="footer-links">JupiterWeb</a>
             </div>
           </div>
         </div>

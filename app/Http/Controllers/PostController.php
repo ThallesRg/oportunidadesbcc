@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Events\PostViewEvent;
 use App\Models\Company;
 use App\Models\CompanyCategory;
+use App\Models\Event;
+use App\Models\Intercambio;
 use App\Models\Post;
+use App\Models\Scholarship;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -16,10 +19,18 @@ class PostController extends Controller
         $posts = Post::latest()->take(20)->with('company')->get();
         $categories = CompanyCategory::take(5)->get();
         $topEmployers = Company::latest()->take(3)->get();
+
+        $latestIntercambio = Intercambio::latest()->first();
+        $latestEvent = Event::latest()->first();
+        $latestScholarship = Scholarship::latest()->first();
+
         return view('Home')->with([
             'posts' => $posts,
             'categories' => $categories,
-            'topEmployers' => $topEmployers
+            'topEmployers' => $topEmployers,
+            'ultimaBolsaDeEstudo' => $latestScholarship,
+            'ultimoIntercambio' => $latestIntercambio,
+            'ultimoEvento' => $latestEvent,
         ]);
     }
 

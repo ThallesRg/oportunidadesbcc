@@ -18,34 +18,34 @@ class CompanySeeder extends Seeder
         $details = [
             [
                 'title' => 'Php laravel developer',
-                'level' => 'Senior level',
+                'level' => 'Senior',
                 'employment' => 'full time',
-                'education' => 'bachelors',
+                'education' => 'bacharelado',
             ], [
                 'title' => 'Marketing Expert',
-                'level' => 'Senior level',
+                'level' => 'Senior',
                 'employment' => 'full time',
-                'education' => 'bachelors',
+                'education' => 'bacharelado',
             ], [
                 'title' => 'Professional designer',
                 'level' => 'Top level',
                 'employment' => 'Part time',
-                'education' => 'bachelors',
+                'education' => 'bacharelado',
             ], [
                 'title' => 'Dotnet programmer',
-                'level' => 'Senior level',
+                'level' => 'Senior',
                 'employment' => 'full time',
-                'education' => 'high school',
+                'education' => 'ensino médio',
             ], [
                 'title' => 'Sales Executive',
-                'level' => 'Senior level',
+                'level' => 'Senior',
                 'employment' => 'Part time',
-                'education' => 'bachelors',
+                'education' => 'bacharelado',
             ], [
-                'title' => 'Maths Teacher',
+                'title' => 'Sales designer',
                 'level' => 'Senior level',
                 'employment' => 'full time',
-                'education' => 'master',
+                'education' => 'mestre',
             ],
         ];
         //user id is 2 that has author role
