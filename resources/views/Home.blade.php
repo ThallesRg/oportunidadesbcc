@@ -138,48 +138,56 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
-                <a href="{{ route('scholarship.show', $ultimaBolsaDeEstudo->id) }}">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" style="height:300px; object-fit:cover"
-                            src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg"
-                            alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h4>Ultima bolsa de estudo</h5>
-                                <hr
-                                    style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
-                                <br><br>
-                                <h5>{{ $ultimaBolsaDeEstudo->name }}</h5>
-                                <p>{{ $ultimaBolsaDeEstudo->description }}</p>
+                @if (isset($ultimaBolsaDeEstudo))
+                    <a href="{{ route('scholarship.show', $ultimaBolsaDeEstudo->id) }}">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" style="height:300px; object-fit:cover"
+                                src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg"
+                                alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h4>Ultima bolsa de estudo</h4>
+                                    <hr
+                                        style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
+                                    <br><br>
+                                    <h5>{{ $ultimaBolsaDeEstudo->name }}</h5>
+                                    <p>{{ $ultimaBolsaDeEstudo->description }}</p>
                         </div>
+                    </a>
+                    @endif
+                </div>
+            <div class="carousel-item">
+            @if (isset($ultimoIntercambio))
+                <a href="{{ route('intercambios.show', $ultimoIntercambio->id) }}">
+                    <img class="d-block w-100" style="height:300px; object-fit:cover"
+                        src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg"
+                        alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Ultimo intercambio</h5>
+                            <hr
+                                style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
+                            <br><br>
+                            <h5>{{ $ultimoIntercambio->name }}</h5>
+                            <p>{{ $ultimoIntercambio->description }}</p>
+                    </div>
                 </a>
+            @endif
             </div>
             <div class="carousel-item">
-              <a href="{{ route('intercambios.show', $ultimoIntercambio->id) }}">
-                <img class="d-block w-100" style="height:300px; object-fit:cover"
-                    src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>Ultimo intercambio</h5>
-                        <hr
-                            style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
-                        <br><br>
-                        <h5>{{ $ultimoIntercambio->name }}</h5>
-                        <p>{{ $ultimoIntercambio->description }}</p>
-                </div>
-              </a>
-            </div>
-            <div class="carousel-item">
-              <a href="{{ route('events.show', $ultimoEvento->id) }}">
-                <img class="d-block w-100" style="height:300px; object-fit:cover"
-                    src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>Ultimo evento</h5>
-                        <hr
-                            style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
-                        <br><br>
-                        <h5>{{ $ultimoEvento->name }}</h5>
-                        <p>{{ $ultimoEvento->description }}</p>
-                </div>
-              </a>
+                @if (isset($ultimoEvento))
+                <a href="{{ route('events.show', $ultimoEvento->id) }}">
+                    <img class="d-block w-100" style="height:300px; object-fit:cover"
+                        src="https://i.pinimg.com/originals/cf/d3/cb/cfd3cb9042d6f1453ee2a4052a861a9d.jpg"
+                        alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h4>Ultimo evento</h5>
+                            <hr
+                                style="margin-top: 1rem; margin-bottom: 1rem; border: 0; border-top: 3px solid rgba(0, 0, 0, 1); width: 30%;">
+                            <br><br>
+                            <h5>{{ $ultimoEvento->name }}</h5>
+                            <p>{{ $ultimoEvento->description }}</p>
+                    </div>
+                </a>
+                @endif
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

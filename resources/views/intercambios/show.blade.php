@@ -38,7 +38,7 @@
                     <tr>
                       <td width="33%">Descrição</td>
                       <td width="3%">:</td>
-                      <td width="64%">{{$intercambio->description}}</td>
+                      <td width="64%" style="white-space: pre-wrap">{{$intercambio->description}}</td>
                     </tr>
                     <tr>
                         <td width="33%">Edital</td>

@@ -37,7 +37,7 @@
 
                         <div class="form-group">
                             <label for="">Destino</label>
-                            <input type="text" placeholder="Destino do intercâmbio"
+                            <input type="text" placeholder="Destino do intercâmbio" wrap="soft"
                                 class="form-control @error('destination') is-invalid @enderror" name="destination"
                                 value="{{ old('destination', $intercambio->destination) }}" required>
                             @error('destination')
