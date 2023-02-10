@@ -43,7 +43,6 @@ border="0" /></a>
 
 ## 1. Clone the repository
 
-> https://github.com/nishangupta/joblister-laravel-8.git
 
 <br />
 
